@@ -530,6 +530,7 @@ encodeBuiltinExpr = \case
     BETextMapLookup -> builtin P.BuiltinFunctionTEXTMAP_LOOKUP
     BETextMapDelete -> builtin P.BuiltinFunctionTEXTMAP_DELETE
     BETextMapSize -> builtin P.BuiltinFunctionTEXTMAP_SIZE
+    BETextMapRange -> builtin P.BuiltinFunctionTEXTMAP_RANGE
     BETextMapToList -> builtin P.BuiltinFunctionTEXTMAP_TO_LIST
 
     BEGenMapEmpty -> builtin P.BuiltinFunctionGENMAP_EMPTY
@@ -537,6 +538,7 @@ encodeBuiltinExpr = \case
     BEGenMapLookup -> builtin P.BuiltinFunctionGENMAP_LOOKUP
     BEGenMapDelete -> builtin P.BuiltinFunctionGENMAP_DELETE
     BEGenMapSize -> builtin P.BuiltinFunctionGENMAP_SIZE
+    BEGenMapRange -> builtin P.BuiltinFunctionGENMAP_RANGE
     BEGenMapKeys -> builtin P.BuiltinFunctionGENMAP_KEYS
     BEGenMapValues -> builtin P.BuiltinFunctionGENMAP_VALUES
 

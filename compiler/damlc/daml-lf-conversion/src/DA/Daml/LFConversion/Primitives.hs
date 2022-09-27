@@ -130,7 +130,8 @@ convertPrim _ "BETextMapToList" (TTextMap a1 :-> TList (TTextMapEntry a2)) | a1 
     pure $ EBuiltin BETextMapToList `ETyApp` a1
 convertPrim _ "BETextMapSize" (TTextMap a :-> TInt64) =
     pure $ EBuiltin BETextMapSize `ETyApp` a
-
+convertPrim _ "BETextMapRange" (TOptional TText:-> TOptional TText :-> TTextMap a1 :-> TTextMap a2) | a1 == a2 =
+    pure $ EBuiltin BETextMapRange `ETyApp` a1
 
 convertPrim _ "BEGenMapEmpty" (TGenMap a b) =
     pure $ EBuiltin BEGenMapEmpty `ETyApp` a `ETyApp` b
@@ -146,6 +147,8 @@ convertPrim _ "BEGenMapValues" (TGenMap a b :-> TList b1) | b == b1 =
     pure $ EBuiltin BEGenMapValues `ETyApp` a `ETyApp` b
 convertPrim _ "BEGenMapSize" (TGenMap a b :-> TInt64) =
     pure $ EBuiltin BEGenMapSize `ETyApp` a `ETyApp` b
+convertPrim _ "BEGenMapRange" (TOptional a1 :-> TOptional a2 :-> TGenMap a3 b1 :-> TGenMap a4 b2) | a1 == a2, a1 == a3, a1 == a3, a1 == a4, b1 == b2 =
+    pure $ EBuiltin BEGenMapRange `ETyApp` a1 `ETyApp` b1
 
 convertPrim _ "BECoerceContractId" (TContractId a :-> TContractId b) =
     pure $ EBuiltin BECoerceContractId `ETyApp` a `ETyApp` b

@@ -44,6 +44,7 @@ module DA.Map
     , member
     , filter
     , filterWithKey
+    , range
     , delete
     , insert
     , insertWith
@@ -141,6 +142,12 @@ filter p = filterWithKey (const p)
 -- satisfy the predicate.
 filterWithKey : Ord k => (k -> v -> Bool) -> Map k v -> Map k v
 filterWithKey p m = fromList $ List.filter (uncurry p) (toList m)
+
+-- | Filter the `Map` using a lower and upper bound on the keys: keep only the
+-- entries where the key lies within the given closed bounded range. If the
+-- lower or upper bound is `None` then the range is unbounded on that end.
+range : Ord k => Optional k -> Optional k -> Map k v -> Map k v
+range = primitive @"BEGenMapRange"
 
 -- | Delete a key and its value from the map. When the key is not a
 -- member of the map, the original map is returned.

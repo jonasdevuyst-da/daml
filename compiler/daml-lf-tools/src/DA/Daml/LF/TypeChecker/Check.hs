@@ -282,6 +282,7 @@ typeOfBuiltin = \case
   BETextMapDelete -> pure $ TForall (alpha, KStar) $ TText :-> TTextMap tAlpha :-> TTextMap tAlpha
   BETextMapToList -> pure $ TForall (alpha, KStar) $ TTextMap tAlpha :-> TList (TTextMapEntry tAlpha)
   BETextMapSize   -> pure $ TForall (alpha, KStar) $ TTextMap tAlpha :-> TInt64
+  BETextMapRange  -> pure $ TForall (alpha, KStar) $ TOptional TText :-> TOptional TText :-> TTextMap tAlpha :-> TTextMap tAlpha
   BEGenMapEmpty -> pure $ TForall (alpha, KStar) $ TForall (beta, KStar) $ TGenMap tAlpha tBeta
   BEGenMapInsert -> pure $ TForall (alpha, KStar) $ TForall (beta, KStar) $ tAlpha :-> tBeta :-> TGenMap tAlpha tBeta :-> TGenMap tAlpha tBeta
   BEGenMapLookup -> pure $ TForall (alpha, KStar) $ TForall (beta, KStar) $ tAlpha :-> TGenMap tAlpha tBeta :-> TOptional tBeta
@@ -289,6 +290,7 @@ typeOfBuiltin = \case
   BEGenMapKeys -> pure $ TForall (alpha, KStar) $ TForall (beta, KStar) $ TGenMap tAlpha tBeta :-> TList tAlpha
   BEGenMapValues -> pure $ TForall (alpha, KStar) $ TForall (beta, KStar) $ TGenMap tAlpha tBeta :-> TList tBeta
   BEGenMapSize -> pure $ TForall (alpha, KStar) $ TForall (beta, KStar) $ TGenMap tAlpha tBeta :-> TInt64
+  BEGenMapRange  -> pure $ TForall (alpha, KStar) $ TForall (beta, KStar) $ TOptional tAlpha :-> TOptional tAlpha :-> TGenMap tAlpha tBeta :-> TGenMap tAlpha tBeta
 
   BEEqualList -> pure $
     TForall (alpha, KStar) $

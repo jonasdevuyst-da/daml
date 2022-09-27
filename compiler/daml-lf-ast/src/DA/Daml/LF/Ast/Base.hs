@@ -308,6 +308,7 @@ data BuiltinExpr
   | BETextMapDelete              -- :: ∀ a. Text -> TextMap a -> TextMap a
   | BETextMapToList              -- :: ∀ a. TextMap a -> List ⟨key: Text, value: a⟩
   | BETextMapSize                -- :: ∀ a. TextMap a -> Int64
+  | BETextMapRange               -- :: ∀ a b. Maybe Text -> Maybe Text -> TextMap a -> TextMap a
 
   -- GenMap operations
   | BEGenMapEmpty                -- :: ∀ a b. GenMap a b
@@ -317,6 +318,7 @@ data BuiltinExpr
   | BEGenMapKeys                 -- :: ∀ a b. GenMap a b -> List a
   | BEGenMapValues               -- :: ∀ a b. GenMap a b -> List b
   | BEGenMapSize                 -- :: ∀ a b. GenMap a b -> Int64
+  | BEGenMapRange                -- :: ∀ a b. Maybe a -> Maybe a -> GenMap a b -> GenMap a b
 
   -- Text operations
   | BEExplodeText                -- :: Text -> List Text

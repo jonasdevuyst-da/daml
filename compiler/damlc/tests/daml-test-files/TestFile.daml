@@ -1,0 +1,6 @@
+module TestFile where
+
+import DA.Map
+foo : Map Int Text
+foo =
+  rangex None None empty
